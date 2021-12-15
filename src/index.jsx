@@ -10,7 +10,7 @@ import './index.scss';
 class FlixSearchApplication extends React.Component {
   render() {
     return (
-      <Container>
+      <Container fluid>
         <MainView />
       </Container>
     );

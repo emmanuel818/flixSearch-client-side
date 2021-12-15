@@ -6,8 +6,7 @@ import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Navbar, Nav, Row, Col, } from "react-bootstrap";
 
 
 
@@ -66,6 +65,19 @@ export class MainView extends React.Component {
 
     return (
       <div className="main-view">
+        <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+          <Navbar.Brand href="#home">Flix-Search</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="home-page">
+              <Nav.Link href="#Login">Profile</Nav.Link>
+              <Nav.Link href="#Profile">Update Profile</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
+
+
         {selectedMovie
           ? (
             <Row className="justify-content-md-center">
@@ -77,8 +89,8 @@ export class MainView extends React.Component {
           : (
             <Row className="justify-content-md-center">
               {movies.map(movie => (
-                <Col md={3}>
-                  <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+                <Col md={3} key={movie._id}>
+                  <MovieCard movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
                 </Col>
               ))}
             </Row>

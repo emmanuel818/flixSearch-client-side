@@ -17,14 +17,14 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Container>
+    <Container fluid>
       <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
         <Navbar.Brand href="#home">Flix-Search</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="home-page">
             <Nav.Link href="#Login">Profile</Nav.Link>
-            <Nav.Link href="Profile">Update Profile</Nav.Link>
+            <Nav.Link href="#Profile">Update Profile</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
