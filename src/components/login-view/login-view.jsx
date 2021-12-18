@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Container, Card, Nav, Navbar, } from 'react-bootstrap';
+import { Container, Card, Col, Row } from 'react-bootstrap';
+import axios from 'axios';
 
 import "./login-view.scss";
 
@@ -13,45 +14,45 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     /* Send a request to the server for authetication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    axios.post('https://flix-search-2021.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+      .then(response => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch(e => {
+        console.log('no such user')
+      });
   };
 
   return (
-    <Container fluid>
-      <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-        <Navbar.Brand href="#home">Flix-Search</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="home-page">
-            <Nav.Link href="#Login">Profile</Nav.Link>
-            <Nav.Link href="#Profile">Update Profile</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+    <Container className="loginPage">
+      <Row>
+        <Col></Col>
+        <Col>
+          <Card style={{ marginTop: 100, marginBottom: 50, width: '30 rem' }}>
+            <Card.Body>
+              <Card.Title style={{ textAlign: 'center' }}>Welcome Please Log-In</Card.Title>
+              <Form>
+                <Form.Group controlId="formUsername">
+                  <Form.Label className="formlabel">Username:</Form.Label>
+                  <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                </Form.Group>
 
-
-      <Container className="loginPage">
-        <Card>
-          <Card.Body>
-            <Card.Title className="text-center">Welcome Please Log-In</Card.Title>
-            <Form>
-              <Form.Group controlId="formUsername">
-                <Form.Label className="formlabel">Username:</Form.Label>
-                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-              </Form.Group>
-
-              <Form.Group controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-              </Form.Group>
-              <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
-            </Form>
-          </Card.Body>
-        </Card>
-      </Container>
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col></Col>
+      </Row>
     </Container>
   );
 }

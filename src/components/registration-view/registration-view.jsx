@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Form, Button, Nav, Navbar } from 'react-bootstrap';
+import { Container, Form, Button, Card, Col, Row } from 'react-bootstrap';
+import axios from 'axios';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
@@ -11,48 +12,57 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authetication */
-    props.handleRegistration(username);
-  };
+    axios.post('https://flix-search-2021.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open('/', '_self'); //the second argument '_self' is necessary so that the page will opne in the current tab
+      })
+      .catch(e => {
+        console.log('error registering user')
+      });
+  }
 
   return (
-    <Container fluid>
-      <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-        <Navbar.Brand href="#home">Flix-Search</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="home-page">
-            <Nav.Link href="#Login">Profile</Nav.Link>
-            <Nav.Link href="#Profile">Update Profile</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+    <Container>
+      <Row>
+        <Col>
+          <Card.Body>
+            <Card style={{ marginTop: 100, marginBottom: 50, width: '50 rem' }}>
+              <Card.Title style={{ textAlign: 'center' }}>Please Register</Card.Title>
+              <Form>
+                <Form.Group controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
+                </Form.Group>
 
-      <Form>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
-        </Form.Group>
+                <Form.Group controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                </Form.Group>
 
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </Form.Group>
+                <Form.Group controlId="formEmail">
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} />
+                </Form.Group>
 
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email:</Form.Label>
-          <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        </Form.Group>
-
-        <Form.Group controlId="formBirthday">
-          <Form.Label>Birthday:</Form.Label>
-          <Form.Control type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        </Form.Group>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
-
-      </Form>
+                <Form.Group controlId="formBirthday">
+                  <Form.Label>Birthday:</Form.Label>
+                  <Form.Control type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
+                </Form.Group>
+                <Button variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
+              </Form>
+            </Card>
+          </Card.Body>
+        </Col>
+      </Row>
     </Container>
+
   );
 }
 
@@ -63,5 +73,4 @@ RegistrationView.propTypes = {
     Email: PropTypes.string.isRequired,
     Birthday: PropTypes.string,
   }),
-  handleRegistration: PropTypes.func.isRequired,
 };
