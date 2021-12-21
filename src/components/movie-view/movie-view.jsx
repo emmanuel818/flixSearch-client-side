@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col, Card, } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import './movie-view.scss'
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
