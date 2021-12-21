@@ -4,4 +4,48 @@
 .loginPage {
   margin-top: 5%;
 }
+.single-movie {
+  height: 400px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.button.btn {
+  display: block;
+  margin: auto;
+}
+.fav-movie {
+  margin-bottom: 15px;
+}
+.fav-movie figure {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  width: 100%;
+}
+.fav-movie figure img {
+  display: block;
+  height: auto;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+}
+.fav-movie button.btn {
+  display: block;
+  margin: auto;
+}
+
+.user-header {
+  margin-bottom: 15px;
+}
+
+.favorite-card {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 /*# sourceMappingURL=index.caa67093.css.map */

@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button, CardGroup, } from 'react-bootstrap';
 
-export function GenreView({ movie, onBackClick }) {
+export function GenreView({ genre, onBackClick }) {
   return (
-    <Card border='primary'>
+    <Card border='primary' style={{ marginTop: 100 }}>
       <CardGroup>
-        <Card.Title>{movie.Genre.Name}</Card.Title>
-        <Card.Text>{movie.Genre.Bio}</Card.Text>
-        <Link to={`/genres/:name ${movie.Genre.Name}`}>
-          <Button variant="link">Open</Button>
-        </Link>
-        <Button onBackClick={() => onBackClick()}>Back</Button>
+        <Card.Title>{genre.Name}</Card.Title>
+        <Card.Text>{genre.Description}</Card.Text>
+        <Button onClick={() => onBackClick()}>Back</Button>
       </CardGroup>
     </Card>
   )

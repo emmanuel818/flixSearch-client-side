@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Card from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Card, Button, CardGroup } from 'react-bootstrap';
 
-export function DirectorView({ movie, onBackClick }) {
+export function DirectorView({ director, onBackClick }) {
   return (
-    <Card border='primary'>
-      <Card.Body>
-        <Card.Title>{movie.Director.Name}</Card.Title>
-        <Card.Text>{movie.Director.Bio}</Card.Text>
-        <Link to={`/directors/:name ${movieDirector.Name}`}>
-          <Button variant="link">Open</Button>
-        </Link>
-        <Button onBackClick={() => onBackClick()}>Back</Button>
-      </Card.Body>
+    <Card border='primary' style={{ marginTop: 100 }}>
+      <CardGroup>
+        <Card.Title>{director.Name}</Card.Title>
+        <Card.Text>{director.Bio}</Card.Text>
+        <Button onClick={() => onBackClick()}>Back</Button>
+      </CardGroup>
     </Card>
   )
 }
