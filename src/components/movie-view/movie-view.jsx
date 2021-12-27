@@ -1,36 +1,60 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button';
+import { Container, Row, Col, Card, } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
+  addToFavs() {
+    const token = localStorage.getItem("token");
+    const Username = localStorage.getItem("user");
+
+
+    axios.post(`https://flix-search-2021.herokuapp.com/users/${Username}/movies/${this.props.movie._id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        console.log(response);
+        alert("The movie is now on your list.");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  componentDidMount() {
+    document.addEventListener("keypress", this.keypressCallback);
+  }
+
 
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, } = this.props;
 
     return (
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movie.ImageUrl} crossOrigin='anonymous' />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-        </div>
-        <button onClick={() => { onBackClick(null); }}>Back</button>
-
-      </div>
+      <Container>
+        <Row>
+          <Col></Col>
+          <Card border="primary" style={{ marginTop: 50, marginBottom: 30, height: 1000, width: 500 }}>
+            <Card.Img variant="top" src={movie.ImageUrl} crossOrigin="anonymous" />
+            <Card.Body>
+              <Card.Title>{movie.Title}</Card.Title>
+              <Card.Text>{movie.Description}</Card.Text>
+              <Link to={`/genres/${movie.Genre.Name}`}>
+                <Button variant="primary">Genre</Button>
+              </Link>
+              <Link to={`/directors/${movie.Director.Name}`}>
+                <Button variant="primary">Directors</Button>
+              </Link>
+              <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
+              <Button variant="primary" onClick={() => { this.addToFavs(movie._id) }}>Add to Favorites</Button>
+            </Card.Body>
+          </Card>
+          <Col></Col>
+        </Row>
+      </Container>
     );
   }
 }
@@ -52,5 +76,5 @@ MovieView.propTypes = {
     }),
     Featured: PropTypes.bool
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
 };

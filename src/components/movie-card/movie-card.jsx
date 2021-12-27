@@ -2,19 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Container, Row, Col, CardGroup, } from 'react-bootstrap';
+//import './movie-card.scss';
+import { Link } from 'react-router-dom';
+
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
+
     return (
-      <Card border='primary'>
-        <Card.Img variant="top" src={movie.ImageUrl} crossOrigin="anonymous" />
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onMovieClick(movie)} variant="link">Open</Button>
-        </Card.Body>
-      </Card>
+      <Container>
+        <Row>
+          <Col></Col>
+          <Card border='primary' className="movieCard text-center" style={{ marginTop: 50, height: 520, width: 300 }}>
+            <Card.Img style={{ height: 400 }} variant="top" src={movie.ImageUrl} crossOrigin="anonymous" />
+            <Card.Title style={{ marginTop: 10 }}>{movie.Title}</Card.Title>
+            <Link to={`/movies/${movie._id}`}>
+              <Button variant="primary">Open</Button>
+            </Link>
+          </Card>
+          <Col></Col>
+        </Row>
+      </Container>
     );
   }
 }
@@ -22,19 +32,6 @@ export class MovieCard extends React.Component {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
     ImageUrl: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birthyear: PropTypes.string,
-      Deathyear: PropTypes.string
-    }),
-    Featured: PropTypes.bool
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
 };
