@@ -31,35 +31,36 @@ export function RegistrationView(props) {
   return (
     <Container>
       <Row>
-        <Col>
-          <Card.Body>
-            <Card style={{ marginTop: 100, marginBottom: 50, width: '50 rem' }}>
-              <Card.Title style={{ textAlign: 'center' }}>Please Register</Card.Title>
-              <Form>
-                <Form.Group controlId="formUsername">
-                  <Form.Label>Username:</Form.Label>
-                  <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
-                </Form.Group>
+        <Col></Col>
+        <Card.Body>
+          <Card style={{ marginTop: 100, marginBottom: 50, width: 500, padding: 20 }}>
+            <Card.Title style={{ textAlign: 'center' }}>Please Register</Card.Title>
+            <Form>
+              <Form.Group controlId="formUsername">
+                <Form.Label>Username:</Form.Label>
+                <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
+              </Form.Group>
 
-                <Form.Group controlId="formPassword">
-                  <Form.Label>Password:</Form.Label>
-                  <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
-                </Form.Group>
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} />
+              </Form.Group>
 
-                <Form.Group controlId="formEmail">
-                  <Form.Label>Email:</Form.Label>
-                  <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} />
-                </Form.Group>
+              <Form.Group controlId="formEmail">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control type="email" placeholder='Enter Email' value={email} onChange={e => setEmail(e.target.value)} />
+              </Form.Group>
 
-                <Form.Group controlId="formBirthday">
-                  <Form.Label>Birthday:</Form.Label>
-                  <Form.Control type="birthday" value={birthday} onChange={e => setBirthday(e.target.value)} />
-                </Form.Group>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
-              </Form>
-            </Card>
-          </Card.Body>
-        </Col>
+              <Form.Group controlId="formBirthday">
+                <Form.Label>Birthday:</Form.Label>
+                <Form.Control type="date" value={birthday} onChange={e => setBirthday(e.target.value)} />
+              </Form.Group>
+              <br></br>
+              <Button variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
+            </Form>
+          </Card>
+        </Card.Body>
+        <Col></Col>
       </Row>
     </Container>
 
@@ -71,6 +72,6 @@ RegistrationView.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string,
+    Birthday: PropTypes.date,
   }),
 };
