@@ -42111,48 +42111,81 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 function DirectorView({ director , onBackClick  }) {
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
-        border: "primary",
-        style: {
-            marginTop: 100
-        },
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/director-view/director-view.jsx",
             lineNumber: 7
         },
         __self: this,
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.CardGroup, {
+        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
             __source: {
                 fileName: "src/components/director-view/director-view.jsx",
                 lineNumber: 8
             },
             __self: this,
             children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
                         lineNumber: 9
                     },
-                    __self: this,
-                    children: director.Name
+                    __self: this
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
+                    border: "primary",
+                    style: {
+                        marginTop: 50,
+                        marginBottom: 30,
+                        height: 300,
+                        width: 500
+                    },
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
                         lineNumber: 10
                     },
                     __self: this,
-                    children: director.Bio
+                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.CardGroup, {
+                        __source: {
+                            fileName: "src/components/director-view/director-view.jsx",
+                            lineNumber: 11
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
+                                __source: {
+                                    fileName: "src/components/director-view/director-view.jsx",
+                                    lineNumber: 12
+                                },
+                                __self: this,
+                                children: director.Name
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
+                                __source: {
+                                    fileName: "src/components/director-view/director-view.jsx",
+                                    lineNumber: 13
+                                },
+                                __self: this,
+                                children: director.Bio
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                onClick: ()=>onBackClick()
+                                ,
+                                __source: {
+                                    fileName: "src/components/director-view/director-view.jsx",
+                                    lineNumber: 14
+                                },
+                                __self: this,
+                                children: "Back"
+                            })
+                        ]
+                    })
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    onClick: ()=>onBackClick()
-                    ,
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 11
+                        lineNumber: 17
                     },
-                    __self: this,
-                    children: "Back"
+                    __self: this
                 })
             ]
         })
@@ -42193,49 +42226,87 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
+var _genreViewScss = require("./genre-view.scss");
 function GenreView({ genre , onBackClick  }) {
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
-        border: "primary",
-        style: {
-            marginTop: 100
-        },
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/genre-view/genre-view.jsx",
-            lineNumber: 7
+            lineNumber: 8
         },
         __self: this,
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.CardGroup, {
+        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
             __source: {
                 fileName: "src/components/genre-view/genre-view.jsx",
-                lineNumber: 8
+                lineNumber: 9
             },
             __self: this,
             children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
-                    __source: {
-                        fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 9
-                    },
-                    __self: this,
-                    children: genre.Name
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
                         lineNumber: 10
                     },
-                    __self: this,
-                    children: genre.Description
+                    __self: this
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    onClick: ()=>onBackClick()
-                    ,
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card, {
+                    border: "primary",
+                    style: {
+                        marginTop: 50,
+                        marginBottom: 30,
+                        height: 220,
+                        width: 500
+                    },
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
                         lineNumber: 11
                     },
                     __self: this,
-                    children: "Back"
+                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.CardGroup, {
+                        __source: {
+                            fileName: "src/components/genre-view/genre-view.jsx",
+                            lineNumber: 12
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Title, {
+                                __source: {
+                                    fileName: "src/components/genre-view/genre-view.jsx",
+                                    lineNumber: 13
+                                },
+                                __self: this,
+                                children: genre.Name
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Card.Text, {
+                                style: {
+                                    marginRight: 10,
+                                    marginLeft: 10
+                                },
+                                __source: {
+                                    fileName: "src/components/genre-view/genre-view.jsx",
+                                    lineNumber: 14
+                                },
+                                __self: this,
+                                children: genre.Description
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                onClick: ()=>onBackClick()
+                                ,
+                                __source: {
+                                    fileName: "src/components/genre-view/genre-view.jsx",
+                                    lineNumber: 15
+                                },
+                                __self: this,
+                                children: "Back"
+                            })
+                        ]
+                    })
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                    __source: {
+                        fileName: "src/components/genre-view/genre-view.jsx",
+                        lineNumber: 18
+                    },
+                    __self: this
                 })
             ]
         })
@@ -42257,7 +42328,7 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"eLeD8","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"aoXdT"}],"2E7Aw":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"eLeD8","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"aoXdT","./genre-view.scss":"3BqnD"}],"3BqnD":[function() {},{}],"2E7Aw":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$58c6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

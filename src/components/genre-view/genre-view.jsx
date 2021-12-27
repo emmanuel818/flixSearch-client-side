@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button, CardGroup, } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, CardGroup, } from 'react-bootstrap';
+import './genre-view.scss';
 
 export function GenreView({ genre, onBackClick }) {
   return (
-    <Card border='primary' style={{ marginTop: 100 }}>
-      <CardGroup>
-        <Card.Title>{genre.Name}</Card.Title>
-        <Card.Text>{genre.Description}</Card.Text>
-        <Button onClick={() => onBackClick()}>Back</Button>
-      </CardGroup>
-    </Card>
+    <Container>
+      <Row>
+        <Col></Col>
+        <Card border='primary' style={{ marginTop: 50, marginBottom: 30, height: 220, width: 500 }}>
+          <CardGroup>
+            <Card.Title>{genre.Name}</Card.Title>
+            <Card.Text style={{ marginRight: 10, marginLeft: 10 }}>{genre.Description}</Card.Text>
+            <Button onClick={() => onBackClick()}>Back</Button>
+          </CardGroup>
+        </Card>
+        <Col></Col>
+      </Row>
+    </Container>
   )
 }
 

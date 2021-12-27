@@ -12,6 +12,14 @@
   display: block;
   margin: auto;
 }
+.card-title {
+  text-align: center;
+}
+
+.button.btn {
+  display: block;
+  margin: auto;
+}
 .fav-movie {
   margin-bottom: 15px;
 }
