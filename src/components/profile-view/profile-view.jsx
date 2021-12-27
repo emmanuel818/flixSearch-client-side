@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Form, Button, Card, Container, Row, Col, Figure } from "react-bootstrap";
 import './profile-view.scss';
+import { connect } from "react-redux";
+import { setUser, updateUser } from "../../actions/actions";
+
 
 
 export class ProfileView extends React.Component {
@@ -290,11 +293,20 @@ export class ProfileView extends React.Component {
   }
 }
 
-ProfileView.propTypes = {
+
+let mapStateToProps = state => {
+  return {
+    user: state.user,
+    movies: state.movies
+  }
+}
+/*ProfileView.propTypes = {
   profile: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
     Birthday: PropTypes.string,
   }),
-};
+};*/
+
+export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);
