@@ -168,7 +168,7 @@ export class ProfileView extends React.Component {
         <Row>
           <Col lg={4}>
             <Card className="user-profile" style={{ marginTop: 50 }}>
-              <Card.Title>User Profile</Card.Title>
+              <Card.Title style={{ marginTop: 20 }}>User Profile</Card.Title>
               <Card.Text>
                 <Card.Body className="profile-container">
                   <span className="label">Username: </span>
@@ -253,35 +253,30 @@ export class ProfileView extends React.Component {
           <Card.Body>
             <Row style={{ marginTop: "20px" }}>
               <Col>
-                <h4 className="user-header">{Username} Favorite Movies</h4>
+                <Card.Title className="user-header">{Username} Favorite Movies</Card.Title>
               </Col>
             </Row>
-            <Row>
-              {FavoriteMovies.length === 0 && (
-                <div className="text-center">No Favorite Movie</div>
-              )}
-              <Row className="favorite-container">
-                {FavoriteMovies.length > 0 && movies.map(({ ImageUrl, Title, _id }) => {
-                  if (_id === FavoriteMovies.find((fav) => fav === _id)
-                  ) {
-                    return (
-                      <Col xs={12} md={6} lg={3} key={_id} className="fav-movie">
-                        <Figure>
-                          <Link to={`/movies/${_id}`}>
-                            <Figure.Image src={ImageUrl} crossOrigin="anonymous"
-                              alt={Title}>
-                            </Figure.Image>
-                            <Figure.Caption>
-                              {Title}
-                            </Figure.Caption>
-                          </Link>
-                        </Figure>
-                        <Button variant="warning" value={_id} onClick={(e) => this.onRemoveFavorite(_id)} > Remove </Button>
-                      </Col>
-                    )
-                  }
-                })}
-              </Row>
+            <Row className="favorite-container">
+              {FavoriteMovies.length > 0 && movies.map(({ ImageUrl, Title, _id }) => {
+                if (_id === FavoriteMovies.find((fav) => fav === _id)
+                ) {
+                  return (
+                    <Col xs={12} md={6} lg={3} key={_id} className="fav-movie">
+                      <Figure>
+                        <Link to={`/movies/${_id}`}>
+                          <Figure.Image src={ImageUrl} crossOrigin="anonymous"
+                            alt={Title}>
+                          </Figure.Image>
+                          <Figure.Caption>
+                            {Title}
+                          </Figure.Caption>
+                        </Link>
+                      </Figure>
+                      <Button variant="warning" value={_id} onClick={(e) => this.onRemoveFavorite(_id)} > Remove </Button>
+                    </Col>
+                  )
+                }
+              })}
             </Row>
           </Card.Body>
         </Card>
