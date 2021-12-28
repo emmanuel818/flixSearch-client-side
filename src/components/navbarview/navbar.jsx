@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Container, Nav, Button, } from 'react-bootstrap';
 
-export function Menu({ user }) {
+export function Menu({ user, movies }) {
   //Sign out method
   const onLoggedOut = () => {
     localStorage.clear();
@@ -22,12 +22,18 @@ export function Menu({ user }) {
   return (
     <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
       <Container fluid>
-        <Navbar.Brand className='navbar-logo' href="/">Flix Search</Navbar.Brand>
+        <Navbar.Brand className='navbar-logo'>Flix Search</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navabr-nav">
+          {isAuth() && (
+            <Nav.Link href="/">Movies</Nav.Link>
+          )}
+          {isAuth() && (
+            <Nav.Link href={`/users/${user}`}>My Profile</Nav.Link>
+          )}
           <Nav className="ml-auto">
             {isAuth() && (
-              <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
+              <Nav.Link>{user}</Nav.Link>
             )}
             {isAuth() && (
               <Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
