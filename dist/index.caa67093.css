@@ -12,13 +12,19 @@
   display: block;
   margin: auto;
 }
-.card-title {
+.director-card {
   text-align: center;
 }
 
-.button.btn {
-  display: block;
-  margin: auto;
+.card-text {
+  text-align: center;
+}
+.genre-card {
+  text-align: center;
+}
+
+.genre-title {
+  text-align: center;
 }
 .fav-movie {
   margin-bottom: 15px;
