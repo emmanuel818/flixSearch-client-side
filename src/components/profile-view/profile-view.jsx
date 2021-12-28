@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Form, Button, Card, Container, Row, Col, Figure } from "react-bootstrap";
 import './profile-view.scss';
@@ -171,7 +170,7 @@ export class ProfileView extends React.Component {
             <Card className="user-profile" style={{ marginTop: 50 }}>
               <Card.Title>User Profile</Card.Title>
               <Card.Text>
-                <div className="profile-container">
+                <Card.Body className="profile-container">
                   <span className="label">Username: </span>
                   <span className="value">{Username}</span>
                   <br />
@@ -180,7 +179,7 @@ export class ProfileView extends React.Component {
                   <span className="value">{Email}</span>
                   <br />
                   <br />
-                </div>
+                </Card.Body>
               </Card.Text>
             </Card>
           </Col>
@@ -242,10 +241,8 @@ export class ProfileView extends React.Component {
                     />
                   </Form.Group>
                   <br />
-                  <div className="bt">
-                    <Button type="submit" onClick={this.editUser}>Update User</Button>
-                    <Button className="delete-button" variant="dark" onClick={() => this.onDeleteUser()} > Delete User </Button>
-                  </div>
+                  <Button style={{ marginRight: 10 }} type="submit" onClick={this.editUser}>Update User</Button>
+                  <Button className="delete-button" variant="dark" onClick={() => this.onDeleteUser()} > Delete User </Button>
                 </Form>
               </Card.Body>
             </Card>
@@ -300,13 +297,6 @@ let mapStateToProps = state => {
     movies: state.movies
   }
 }
-/*ProfileView.propTypes = {
-  profile: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string,
-  }),
-};*/
+
 
 export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);
