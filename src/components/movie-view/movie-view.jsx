@@ -37,19 +37,19 @@ export class MovieView extends React.Component {
       <Container>
         <Row>
           <Col></Col>
-          <Card border="primary" style={{ marginTop: 50, marginBottom: 30, height: 1000, width: 500 }}>
+          <Card border="primary" style={{ marginTop: 50, marginBottom: 50, height: 955, width: 500 }}>
             <Card.Img variant="top" src={movie.ImageUrl} crossOrigin="anonymous" />
             <Card.Body>
               <Card.Title>{movie.Title}</Card.Title>
               <Card.Text>{movie.Description}</Card.Text>
               <Link to={`/genres/${movie.Genre.Name}`}>
-                <Button variant="primary">Genre</Button>
+                <Button style={{ marginRight: 10, marginLeft: 40 }} variant="primary">Genre</Button>
               </Link>
               <Link to={`/directors/${movie.Director.Name}`}>
-                <Button variant="primary">Directors</Button>
+                <Button style={{ marginRight: 10 }} variant="primary">Directors</Button>
               </Link>
-              <Button variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
-              <Button variant="primary" onClick={() => { this.addToFavs(movie._id) }}>Add to Favorites</Button>
+              <Button style={{ marginRight: 10 }} variant="primary" onClick={() => { onBackClick(null); }}>Back</Button>
+              <Button variant="warning" onClick={() => { this.addToFavs(movie._id) }}>Add to Favorites</Button>
             </Card.Body>
           </Card>
           <Col></Col>

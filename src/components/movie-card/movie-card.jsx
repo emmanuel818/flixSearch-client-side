@@ -15,11 +15,11 @@ export class MovieCard extends React.Component {
       <Container>
         <Row>
           <Col></Col>
-          <Card border='primary' className="movieCard text-center" style={{ marginTop: 50, height: 520, width: 300 }}>
+          <Card border='primary' className="movieCard text-center" style={{ marginTop: 50, height: 500, width: 300 }}>
             <Card.Img style={{ height: 400 }} variant="top" src={movie.ImageUrl} crossOrigin="anonymous" />
             <Card.Title style={{ marginTop: 10 }}>{movie.Title}</Card.Title>
             <Link to={`/movies/${movie._id}`}>
-              <Button variant="primary">Open</Button>
+              <Button variant="primary">Description</Button>
             </Link>
           </Card>
           <Col></Col>
