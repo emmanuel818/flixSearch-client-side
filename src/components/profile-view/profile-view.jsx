@@ -9,17 +9,6 @@ import { setUser, updateUser } from "../../actions/actions";
 
 
 export class ProfileView extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      Username: null,
-      Password: null,
-      Email: null,
-      Birthday: null,
-      FavoriteMovies: [],
-    };
-  }
 
   componentDidMount() {
     const accessToken = localStorage.getItem("token");
@@ -29,9 +18,7 @@ export class ProfileView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
+    this.props.setUser(null);
     window.open("/", "_self");
   }
 
@@ -42,13 +29,7 @@ export class ProfileView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies,
-        });
+        this.props.setUser(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -64,27 +45,18 @@ export class ProfileView extends React.Component {
       .put(
         `https://flix-search-2021.herokuapp.com/users/${Username}`,
         {
-          Username: this.state.Username,
-          Password: this.state.Password,
-          Email: this.state.Email,
-          Birthday: this.state.Birthday,
+          Username: this.Username,
+          Password: this.Password,
+          Email: this.Email,
+          Birthday: this.Birthday,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((response) => {
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-        });
-
-        localStorage.setItem("user", this.state.Username);
-        const data = response.data;
-        console.log(data);
-        console.log(this.state.Username);
+        this.props.updateUser(response.data)
+        localStorage.setItem("user", this.Username);
         alert("Profile is updated!");
         window.open(`/users/${Username}`, "_self");
       })
@@ -102,7 +74,7 @@ export class ProfileView extends React.Component {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        console.log(response)
         alert("Profile has been deleted!");
         localStorage.removeItem("user");
         localStorage.removeItem("token");
@@ -121,10 +93,8 @@ export class ProfileView extends React.Component {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        console.log(response);
+        this.props.setUser(response.data);
         alert("Movie has been removed!");
-        localStorage.removeItem("user");
-        localStorage.removeItem("token");
       })
       .catch(function (error) {
         console.log(error);
@@ -132,36 +102,25 @@ export class ProfileView extends React.Component {
   }
 
   setUsername(value) {
-    this.setState({
-      Username: value,
-    });
     this.Username = value;
   }
 
   setPassword(value) {
-    this.setState({
-      Password: value,
-    });
     this.Password = value;
   }
 
   setEmail(value) {
-    this.setState({
-      Email: value,
-    });
     this.Email = value;
   }
 
   setBirthday(value) {
-    this.setState({
-      Birthday: value,
-    });
     this.Birthday = value;
   }
 
   render() {
-    const { movies } = this.props;
-    const { FavoriteMovies, Email, Username } = this.state;
+    const { movies, user } = this.props;
+
+    if (!user) return <div>Loading...</div>
 
     return (
       <Container className="profile-view" align="center" fluid>
@@ -172,11 +131,11 @@ export class ProfileView extends React.Component {
               <Card.Text>
                 <Card.Body className="profile-container">
                   <span className="label">Username: </span>
-                  <span className="value">{Username}</span>
+                  <span className="value">{user.Username}</span>
                   <br />
                   <br />
                   <span className="label">Email: </span>
-                  <span className="value">{Email}</span>
+                  <span className="value">{user.Email}</span>
                   <br />
                   <br />
                 </Card.Body>
@@ -253,12 +212,12 @@ export class ProfileView extends React.Component {
           <Card.Body>
             <Row style={{ marginTop: "20px" }}>
               <Col>
-                <Card.Title className="user-header">{Username} Favorite Movies</Card.Title>
+                <Card.Title className="user-header">{user.Username} Favorite Movies</Card.Title>
               </Col>
             </Row>
             <Row className="favorite-container">
-              {FavoriteMovies.length > 0 && movies.map(({ ImageUrl, Title, _id }) => {
-                if (_id === FavoriteMovies.find((fav) => fav === _id)
+              {user.FavoriteMovies.length > 0 && movies.map(({ ImageUrl, Title, _id }) => {
+                if (_id === user.FavoriteMovies.find((fav) => fav === _id)
                 ) {
                   return (
                     <Col xs={12} md={6} lg={3} key={_id} className="fav-movie">

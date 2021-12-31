@@ -24,7 +24,7 @@ export function RegistrationView(props) {
         window.open('/', '_self'); //the second argument '_self' is necessary so that the page will opne in the current tab
       })
       .catch(e => {
-        console.log('error registering user')
+        alert('error registering user')
       });
   }
 
