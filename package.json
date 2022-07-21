@@ -1,4 +1,5 @@
 {
+  "homepage": "emmanuel818.github.io/flixSearch-client-side",
   "name": "flixsearch-client-side",
   "version": "1.0.0",
   "description": "",
@@ -30,6 +31,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/emmanuel818/flixSearch-client-side/issues"
-  },
-  "homepage": "https://github.com/emmanuel818/flixSearch-client-side#readme"
+  }
 }
