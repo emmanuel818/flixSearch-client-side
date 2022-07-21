@@ -1,5 +1,5 @@
 {
-  "homepage": "emmanuel818.github.io/flixSearch-client-side",
+  "homepage": "https://emmanuel818.github.io/flixSearch-client-side",
   "name": "flixsearch-client-side",
   "version": "1.0.0",
   "description": "",
@@ -18,7 +18,8 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "gh-pages": "^4.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
