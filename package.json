@@ -1,5 +1,4 @@
 {
-  "homepage": "https://emmanuel818.github.io/flixSearch-client-side",
   "name": "flixsearch-client-side",
   "version": "1.0.0",
   "description": "",
@@ -18,14 +17,9 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
-    "gh-pages": "^4.0.0"
+    "@parcel/transformer-sass": "^2.0.0-rc.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,5 +30,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/emmanuel818/flixSearch-client-side/issues"
-  }
+  },
+  "homepage": "https://github.com/emmanuel818/flixSearch-client-side#readme"
 }
